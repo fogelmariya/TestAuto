@@ -10,13 +10,15 @@ import org.testng.annotations.*;
 
 import java.util.List;
 
+import static org.testng.Assert.*;
+
 public class Homework2 {
 
     private WebDriver driver;
-    private  List<WebElement> hometext;
+    private List<WebElement> hometext;
 
     @BeforeClass
-    public void setUp(){
+    public void setUp() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.navigate().to("https://jdi-framework.github.io/tests");
@@ -24,14 +26,14 @@ public class Homework2 {
     }
 
     @AfterClass
-    public void tearDown(){
+    public void tearDown() {
         driver.close();
     }
 
     @DataProvider(parallel = true)
-    public Object[][] dp(){
+    public Object[][] dp() {
         return new Object[][]{
-                {0, "To include good practices\n" +  "and ideas from successful\n" + "EPAM projec"},
+                {0, "To include good practices\n" + "and ideas from successful\n" + "EPAM projec"},
                 {1, "To be flexible and\n" + "customizable"},
                 {2, "To be multiplatform"},
                 {3, "Already have good base\n" + "(about 20 internal and\n" + "some external projects),\n" + "wish to get more…"}
@@ -39,14 +41,14 @@ public class Homework2 {
     }
 
     @Test(dataProvider = "dp")
-    public void testText1(int num, String txt){
+    public void testText1(int num, String txt) {
 
-        for (WebElement text: hometext) {
-            Assert.assertTrue(text.isDisplayed());
+        for (WebElement text : hometext) {
+            assertTrue(text.isDisplayed());
         }
-        Assert.assertEquals(hometext.get(num).getText(), txt);
-        Assert.assertEquals(hometext.get(num).getText(), txt);
-        Assert.assertEquals(hometext.get(num).getText(), txt);
-        Assert.assertEquals(hometext.get(num).getText(), txt);
+        assertEquals(hometext.get(num).getText(), txt);
+        assertEquals(hometext.get(num).getText(), txt);
+        assertEquals(hometext.get(num).getText(), txt);
+        assertEquals(hometext.get(num).getText(), txt);
     }
 }

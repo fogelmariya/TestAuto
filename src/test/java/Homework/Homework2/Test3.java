@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 public class Test3 {
     @DataProvider
-    public Object[][] dp(){
+    public Object[][] dp() {
         return new Object[][]{
                 {1, "string1"},
                 {2, "string 2"}
@@ -15,18 +15,18 @@ public class Test3 {
     }
 
     @Test(dataProvider = "dp", groups = {"Regression", "Smoke"})
-    public void SmokeRegression3(int i, String s){
+    public void SmokeRegression3(int i, String s) {
 
         System.out.println("int: " + i + " " + "string: " + s);
     }
 
     @Test(groups = {"Regression", "Smoke"})
-    public void Smoke1(){
+    public void Smoke1() {
         Assert.assertEquals(1 + 5, 6);
     }
 
     @Test(groups = {"Regression", "Smoke"})
-    public void Smoke2(){
+    public void Smoke2() {
         Assert.assertEquals(7 + 3, 10);
     }
 }
