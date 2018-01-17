@@ -13,10 +13,12 @@ public class SeleniumTest {
     public void setUp3(){
         System.out.println("ready for test");
     }
+
     @BeforeSuite
     public void setUp2(){
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
     }
+
     @BeforeMethod
     public void setUp(){
         driver = new ChromeDriver();
@@ -32,6 +34,7 @@ public class SeleniumTest {
     public void tearDown2(){
         System.out.println("all tests passed");
     }
+
     @AfterTest
     public void tearDown3(){
         System.out.println("well done!");
