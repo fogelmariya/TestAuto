@@ -9,6 +9,7 @@ import org.testng.Assert;
 
 import java.util.List;
 
+import static enums.IndexPageTextEnum.*;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
@@ -50,7 +51,7 @@ public class IndexPagehw3 {
     }
 
     public void checkTitle(WebDriver driver) {
-        assertEquals(driver.getTitle(), "Index Page");
+        assertEquals(driver.getTitle(), PAGE_NAME);
     }
 
     public void checkImageIsDisplayed(WebDriver driver) {
@@ -71,12 +72,12 @@ public class IndexPagehw3 {
         }
 
         assertEquals(textsUnderImages.get(0).getText().replaceAll("\\n", " "),
-                "To include good practices and ideas from successful EPAM projec");
+                TEXT_1);
         assertEquals(textsUnderImages.get(1).getText().replaceAll("\\n", " "),
-                "To be flexible and customizable");
-        assertEquals(textsUnderImages.get(2).getText(), "To be multiplatform");
+                TEXT_2);
+        assertEquals(textsUnderImages.get(2).getText(), TEXT_3);
         assertEquals(textsUnderImages.get(3).getText().replaceAll("\\n", " "),
-                "Already have good base (about 20 internal and some external projects), wish to get more…");
+                TEXT_4);
     }
 
     public void checkMainText(WebDriver driver) {
@@ -84,12 +85,8 @@ public class IndexPagehw3 {
         assertTrue(homeText2.isDisplayed());
     }
 
-    public void checkTextUnderImages(IndexPageTextEnum[] text) {
-        assertEquals("", text[0].text);
-    }
-
     public void checkUserName(WebDriver driver) {
-        assertEquals(userName.getText(), "PITER CHAILOVSKII");
+        assertEquals(userName.getText(), NAME);
     }
 }
 
