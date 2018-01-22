@@ -1,7 +1,5 @@
 package pageObject;
 
-import enums.IndexPageTextEnum;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -51,7 +49,7 @@ public class IndexPagehw3 {
     }
 
     public void checkTitle(WebDriver driver) {
-        assertEquals(driver.getTitle(), PAGE_NAME);
+        assertEquals(driver.getTitle(), PAGE_NAME.text);
     }
 
     public void checkImageIsDisplayed(WebDriver driver) {
@@ -72,12 +70,12 @@ public class IndexPagehw3 {
         }
 
         assertEquals(textsUnderImages.get(0).getText().replaceAll("\\n", " "),
-                TEXT_1);
+                TEXT_1.text);
         assertEquals(textsUnderImages.get(1).getText().replaceAll("\\n", " "),
-                TEXT_2);
-        assertEquals(textsUnderImages.get(2).getText(), TEXT_3);
+                TEXT_2.text);
+        assertEquals(textsUnderImages.get(2).getText(), TEXT_3.text);
         assertEquals(textsUnderImages.get(3).getText().replaceAll("\\n", " "),
-                TEXT_4);
+                TEXT_4.text);
     }
 
     public void checkMainText(WebDriver driver) {
@@ -86,7 +84,7 @@ public class IndexPagehw3 {
     }
 
     public void checkUserName(WebDriver driver) {
-        assertEquals(userName.getText(), NAME);
+        assertEquals(userName.getText(), NAME.text);
     }
 }
 
