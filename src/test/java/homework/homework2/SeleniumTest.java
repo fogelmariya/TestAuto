@@ -11,11 +11,12 @@ import static org.testng.AssertJUnit.assertTrue;
 
 
 public class SeleniumTest {
-    private WebDriver driver;
+
+    WebDriver driver;
 
     @BeforeTest
     public void setUp3() {
-        System.out.println("ready for test");
+        System.out.println(driver.getTitle());
     }
 
     @BeforeSuite
@@ -26,17 +27,18 @@ public class SeleniumTest {
     @BeforeMethod
     public void setUp() {
         driver = new ChromeDriver();
-        driver.navigate().to("https://www.epam.com");
     }
 
     @AfterMethod
     public void tearDown() {
-        System.out.println("well done!");
+        System.out.println(System.currentTimeMillis());
     }
 
     @AfterSuite
     public void tearDown2() {
-        System.out.println("all tests passed");
+        if (driver.toString().contains("null")) {
+            driver.quit();
+        }
     }
 
     @AfterTest
@@ -46,6 +48,7 @@ public class SeleniumTest {
 
     @Test
     public void test1() {
+        driver.navigate().to("https://www.epam.com");
         assertEquals(driver.getTitle(), "EPAM | Software Product Development Services");
         driver.findElement(By.xpath("//button[contains(@class, 'header-search')]")).click();
 
