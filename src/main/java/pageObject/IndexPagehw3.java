@@ -49,7 +49,7 @@ public class IndexPagehw3 {
     }
 
     public void checkTitle(WebDriver driver) {
-        assertEquals(driver.getTitle(), PAGE_NAME.text);
+        assertEquals(driver.getTitle(), "Index Page");
     }
 
     public void checkImageIsDisplayed(WebDriver driver) {
@@ -84,7 +84,7 @@ public class IndexPagehw3 {
     }
 
     public void checkUserName(WebDriver driver) {
-        assertEquals(userName.getText(), NAME.text);
+        assertEquals(userName.getText(), "PITER CHAILOVSKII");
     }
 }
 

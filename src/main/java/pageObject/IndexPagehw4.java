@@ -80,7 +80,7 @@ public class IndexPagehw4 {
     }
 
     public void checkUserName(String userName) {
-        $(".profile-photo>span").shouldHave(text(userName));
+        $(".profile-photo>span").shouldHave(text("PITER CHAILOVSKII"));
         // user.shouldHave(text(userName));
     }
 
