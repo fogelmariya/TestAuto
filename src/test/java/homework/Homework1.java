@@ -1,5 +1,6 @@
-package Homework;
+package homework;
 
+import enums.IndexPageTextEnum;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,11 +9,13 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
+import static enums.IndexPageTextEnum.*;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 
 public class Homework1 {
+    IndexPageTextEnum[] textEnums;
     @Test
     public void testIndexPage() {
 
@@ -52,13 +55,11 @@ public class Homework1 {
         for (WebElement text : homeText) {
             assertTrue(text.isDisplayed());
         }
-        assertEquals(homeText.get(0).getText(), "To include good practices\n" +
-                "and ideas from successful\n" + "EPAM projec");
-        assertEquals(homeText.get(1).getText(), "To be flexible and\n" +
-                "customizable");
-        assertEquals(homeText.get(2).getText(), "To be multiplatform");
-        assertEquals(homeText.get(3).getText(), "Already have good base\n" +
-                "(about 20 internal and\n" + "some external projects),\n" + "wish to get more…");
+
+        assertEquals(homeText.get(0).getText().replaceAll("\\n", " "), TEXT_1.text);
+        assertEquals(homeText.get(1).getText().replaceAll("\\n", " "), TEXT_2.text);
+        assertEquals(homeText.get(2).getText().replaceAll("\\n", " "), TEXT_3.text);
+        assertEquals(homeText.get(3).getText().replaceAll("\\n", " "), TEXT_4.text);
 
         //8 Assert that there are the main header and the text below it on the Home Page
         element = driver.findElement(By.xpath("/html/body/div/div/main/div[2]/h3"));

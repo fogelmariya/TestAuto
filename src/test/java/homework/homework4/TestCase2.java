@@ -1,4 +1,4 @@
-package Homework.Homework4;
+package homework.homework4;
 
 
 import com.codeborne.selenide.Configuration;
@@ -7,7 +7,6 @@ import org.testng.annotations.Test;
 import pageObject.IndexPagehw4;
 import pageObject.ServicePagehw4;
 
-import static enums.IndexPageTextEnum.NAME;
 
 public class TestCase2 {
 
@@ -29,7 +28,7 @@ public class TestCase2 {
         indexPage.login("epam", "1234");
 
         //3 Assert User name in the left-top side of screen that user is loggined
-        indexPage.checkUserName(NAME.text);
+        indexPage.checkUserName("PITER CHAILOVSKII");
 
         //4 Open Service -> Dates
         indexPage.openServiceDates();

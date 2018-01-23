@@ -1,15 +1,13 @@
-package Homework.Homework4;
+package homework.homework4;
 
 import com.codeborne.selenide.Configuration;
 import enums.ServicePageEnum;
-
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 import pageObject.IndexPagehw4;
 import pageObject.ServicePagehw4;
 
 import static com.codeborne.selenide.Selenide.open;
-import static enums.IndexPageTextEnum.*;
 
 
 public class Homework4 {
@@ -33,7 +31,7 @@ public class Homework4 {
         indexPage.login("epam", "1234");
 
         //3 Assert User name in the left-top side of screen that user is loggined
-        indexPage.checkUserName(NAME.text);
+        indexPage.checkUserName("PITER CHAILOVSKII");
 
         //4 Check interface on Home page, it contains all needed elements.
         indexPage.checkImageIsDisplayed();

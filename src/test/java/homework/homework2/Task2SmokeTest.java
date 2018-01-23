@@ -1,11 +1,11 @@
-package Homework.Homework2;
+package homework.homework2;
 
 
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class Test1 {
+public class Task2SmokeTest {
     @DataProvider
     public Object[][] dp() {
         return new Object[][]{

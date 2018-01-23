@@ -8,8 +8,8 @@
             </run>
         </groups>
         <classes>
-            <class name="Homework.Homework2.Test2"/>
-            <class name="Homework.Homework2.Test3"/>
+            <class name="homework.homework2.Task2RegressionTest"/>
+            <class name="homework.homework2.Task2Regression_SmokeTest"/>
         </classes>
     </test>
 </suite>
