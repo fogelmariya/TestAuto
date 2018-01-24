@@ -1,21 +1,25 @@
 package homework;
 
-import enums.IndexPageTextEnum;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
-import static enums.IndexPageTextEnum.*;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 
 public class Homework1 {
-    IndexPageTextEnum[] textEnums;
+
+    List<String> textUnderImageExpected = Arrays.asList(
+            "To include good practices and ideas from successful EPAM projec",
+            "To be flexible and customizable", "To be multiplatform",
+            "Already have good base (about 20 internal and some external projects), wish to get more…");
+
     @Test
     public void testIndexPage() {
 
@@ -52,14 +56,11 @@ public class Homework1 {
         //7 Assert that there are 4 texts on the Home Page and check them by getting texts
         List<WebElement> homeText = driver.findElements(By.className("benefit-txt"));
         assertEquals(homeText.size(), 4);
+
         for (WebElement text : homeText) {
             assertTrue(text.isDisplayed());
+            assertTrue(textUnderImageExpected.contains(text.getText().replaceAll("\\n", " ")));
         }
-
-        assertEquals(homeText.get(0).getText().replaceAll("\\n", " "), TEXT_1.text);
-        assertEquals(homeText.get(1).getText().replaceAll("\\n", " "), TEXT_2.text);
-        assertEquals(homeText.get(2).getText().replaceAll("\\n", " "), TEXT_3.text);
-        assertEquals(homeText.get(3).getText().replaceAll("\\n", " "), TEXT_4.text);
 
         //8 Assert that there are the main header and the text below it on the Home Page
         element = driver.findElement(By.xpath("/html/body/div/div/main/div[2]/h3"));

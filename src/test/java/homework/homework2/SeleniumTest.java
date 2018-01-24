@@ -14,24 +14,19 @@ public class SeleniumTest {
 
     WebDriver driver;
 
-    @BeforeTest
-    public void setUp3() {
-        System.out.println(driver.getTitle());
-    }
-
     @BeforeSuite
     public void setUp2() {
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
     }
 
-    @BeforeMethod
+    @BeforeTest
     public void setUp() {
-        driver = new ChromeDriver();
+        System.out.println(System.currentTimeMillis());
     }
 
-    @AfterMethod
+    @BeforeMethod
     public void tearDown() {
-        System.out.println(System.currentTimeMillis());
+        driver = new ChromeDriver();
     }
 
     @AfterSuite
@@ -45,6 +40,12 @@ public class SeleniumTest {
     public void tearDown3() {
         driver.close();
     }
+
+    @AfterMethod
+    public void setUp3() {
+        System.out.println(driver.getTitle());
+    }
+
 
     @Test
     public void test1() {
