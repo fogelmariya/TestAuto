@@ -56,5 +56,4 @@ public class SeleniumTest {
         assertTrue(menuButton.isDisplayed());
         assertEquals(menuButton.getText(), "MENU");
     }
-
 }

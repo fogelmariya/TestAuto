@@ -52,7 +52,7 @@ public class IndexPagehw3 {
         assertEquals(driver.getTitle(), "Index Page");
     }
 
-    public void checkImageIsDisplayed(WebDriver driver) {
+    public void checkImageIsDisplayed() {
         assertEquals(homeImages.size(), 4);
         for (WebElement image : homeImages) {
             assertTrue(image.isDisplayed());
@@ -63,7 +63,7 @@ public class IndexPagehw3 {
         driver.navigate().to("https://jdi-framework.github.io/tests");
     }
 
-    public void checkText(WebDriver driver) {
+    public void checkText() {
         assertEquals(textsUnderImages.size(), 4);
         for (WebElement text : textsUnderImages) {
             Assert.assertTrue(text.isDisplayed());
@@ -78,12 +78,12 @@ public class IndexPagehw3 {
                 TEXT_4.text);
     }
 
-    public void checkMainText(WebDriver driver) {
+    public void checkMainText() {
         assertTrue(homeText1.isDisplayed());
         assertTrue(homeText2.isDisplayed());
     }
 
-    public void checkUserName(WebDriver driver) {
+    public void checkUserName() {
         assertEquals(userName.getText(), "PITER CHAILOVSKII");
     }
 }
