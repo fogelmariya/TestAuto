@@ -7,11 +7,10 @@ import org.testng.Assert;
 
 import java.util.List;
 
-import static enums.IndexPageTextEnum.*;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class IndexPagehw3 {
+public class HomePagehw3 {
 
     @FindBy(css = ".uui-profile-menu .dropdown-toggle")
     private WebElement loginFormButton;
@@ -63,19 +62,13 @@ public class IndexPagehw3 {
         driver.navigate().to("https://jdi-framework.github.io/tests");
     }
 
-    public void checkText() {
+    public void checkTexts(List<String> texts) {
         assertEquals(textsUnderImages.size(), 4);
         for (WebElement text : textsUnderImages) {
             Assert.assertTrue(text.isDisplayed());
+            Assert.assertTrue(texts.contains(text.getText().replaceAll("\\n", " ")));
         }
 
-        assertEquals(textsUnderImages.get(0).getText().replaceAll("\\n", " "),
-                TEXT_1.text);
-        assertEquals(textsUnderImages.get(1).getText().replaceAll("\\n", " "),
-                TEXT_2.text);
-        assertEquals(textsUnderImages.get(2).getText(), TEXT_3.text);
-        assertEquals(textsUnderImages.get(3).getText().replaceAll("\\n", " "),
-                TEXT_4.text);
     }
 
     public void checkMainText() {

@@ -1,24 +1,25 @@
 package homework.homework3;
 
 
+import enums.IndexPageTextEnum;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import pageObject.IndexPagehw3;
+import pageObject.HomePagehw3;
 
 public class Homework3 {
 
-    private WebDriver driver = new ChromeDriver();
-    private IndexPagehw3 indexPage;
+    private WebDriver driver;
+    private HomePagehw3 indexPage;
 
     @BeforeClass
     public void setUp() {
+        driver = new ChromeDriver();
         driver.manage().window().maximize();
-        indexPage = PageFactory.initElements(driver, IndexPagehw3.class);
-        indexPage.open(driver);
+        indexPage = PageFactory.initElements(driver, HomePagehw3.class);
     }
 
     @AfterClass(alwaysRun = true)
@@ -28,6 +29,9 @@ public class Homework3 {
 
     @Test
     public void testIndexPage() {
+    //  1
+        indexPage.open(driver);
+
         //2 Assert Browser title
         indexPage.checkTitle(driver);
 
@@ -44,7 +48,7 @@ public class Homework3 {
         indexPage.checkImageIsDisplayed();
 
         //7 Assert that there are 4 texts on the Home Page and check them by getting texts
-        indexPage.checkText();
+        indexPage.checkTexts(IndexPageTextEnum.getTexts());
 
         //8 Assert that there are the main header and the text below it on the Home Page
         indexPage.checkMainText();
