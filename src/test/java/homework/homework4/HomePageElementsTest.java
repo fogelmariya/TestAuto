@@ -11,6 +11,12 @@ import pageObject.HomePagehw4;
 import pageObject.ServicePagehw4;
 
 import static com.codeborne.selenide.Selenide.*;
+import static enums.ColorsEnum.YELLOW;
+import static enums.ElementsEnum.WATER;
+import static enums.ElementsEnum.WIND;
+import static enums.MetalEnum.SELEN;
+import static enums.ServicePageEnum.COLORS;
+import static enums.ServicePageEnum.METAL;
 
 @Listeners(AllureAttachmentListener.class)
 public class HomePageElementsTest {
@@ -60,7 +66,8 @@ public class HomePageElementsTest {
         servicePagehw4.checkInterfaces();
 
         //8 Select and assert checkboxes
-        servicePagehw4.checkWaterAndWindCheckboxes();
+        servicePagehw4.checkCheckbox(WATER.text);
+        servicePagehw4.checkCheckbox(WIND.text);
 
         //9 Select radio
         servicePagehw4.checkSelenRadio();
@@ -69,17 +76,18 @@ public class HomePageElementsTest {
         servicePagehw4.checkYellowDropdown();
 
         //11 Check in logs section selected values and status (true|false)
-        servicePagehw4.checkLogValue(0, "Colors", "Yellow");
-        servicePagehw4.checkLogValue(1, "metal", "Selen");
-        servicePagehw4.checkLogCondition(2, "Wind", true);
-        servicePagehw4.checkLogCondition(3, "Water", true);
+        servicePagehw4.checkLogValue(0, COLORS.text, YELLOW.text);
+        servicePagehw4.checkLogValue(1, METAL.text, SELEN.text);
+        servicePagehw4.checkLogCondition(2, WIND.text, true);
+        servicePagehw4.checkLogCondition(3, WATER.text, true);
 
         //12 Unselect and assert checkboxes
-        servicePagehw4.checkUnselect();
+        servicePagehw4.checkUnselect(WATER.text);
+        servicePagehw4.checkUnselect(WIND.text);
 
         //13 Check in logs section unselected values and status (true|false)
-        servicePagehw4.checkLogCondition(0, "Wind", false);
-        servicePagehw4.checkLogCondition(1, "Water", false);
+        servicePagehw4.checkLogCondition(0, WIND.text, false);
+        servicePagehw4.checkLogCondition(1, WATER.text, false);
     }
 
 
