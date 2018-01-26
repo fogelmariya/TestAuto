@@ -2,49 +2,61 @@ package homework.homework4;
 
 import com.codeborne.selenide.Configuration;
 import enums.ServicePageEnum;
+import listeners.AllureAttachmentListener;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import pageObject.IndexPagehw4;
+import pageObject.HomePagehw4;
 import pageObject.ServicePagehw4;
 
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
+@Listeners(AllureAttachmentListener.class)
+public class HomePageElementsTest {
 
-public class Homework4 {
-
-    private IndexPagehw4 indexPage = new IndexPagehw4();
-    private ServicePagehw4 servicePagehw4 = new ServicePagehw4();
+    private HomePagehw4 homePage ;
+    private ServicePagehw4 servicePagehw4;
 
     @BeforeSuite
     public void setUp() {
         Configuration.browser = "chrome";
         Configuration.startMaximized = true;
+        homePage = page(HomePagehw4.class);
+        servicePagehw4 = page(ServicePagehw4.class);
+    }
+
+    @AfterTest
+    public void tearDown(){
+        close();
     }
 
     @Test
     public void IndexAndServicePageTest1(){
+        page(homePage);
         //1 Open test site by URL
         open("https://jdi-framework.github.io/tests");
-//        indexPage.openSite();
+//        homePage.openSite();
 
         //2 Perform login
-        indexPage.login("epam", "1234");
+        homePage.login("epam", "1234");
 
         //3 Assert User name in the left-top side of screen that user is loggined
-        indexPage.checkUserName("PITER CHAILOVSKII");
+        homePage.checkUserName("PITER CHAILOVSKII");
 
         //4 Check interface on Home page, it contains all needed elements.
-        indexPage.checkImageIsDisplayed();
-        indexPage.checkTextUnderImages();
-        indexPage.checkMainText();
+        homePage.checkImageIsDisplayed();
+        homePage.checkTextUnderImages();
+        homePage.checkMainText();
 
         //5 Click on Service subcategory in the left section and check that drop down contains options
-        indexPage.checkServicesLeft(ServicePageEnum.values());
+        homePage.checkServicesLeft(ServicePageEnum.values());
 
         //6 Click on "Service" subcategory in the header and check that drop down contains options
-        indexPage.checkServicesHeader(ServicePageEnum.values());
+        homePage.checkServicesHeader(ServicePageEnum.values());
 
         //7 Check interface on Service page, it contains all needed elements.
+        homePage.openServiceDifferentElements();
         servicePagehw4.checkInterfaces();
 
         //8 Select and assert checkboxes
