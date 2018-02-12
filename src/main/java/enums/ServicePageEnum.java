@@ -8,7 +8,7 @@ public enum ServicePageEnum {
     SERVICE_2("Dates"),
     SERVICE_3("Complex Table "),
     SERVICE_4("Simple Table"),
-    SERVICE_5("Table with pages"),
+    SERVICE_5("Table with site.pages"),
     SERVICE_6("Different elements"),
     COLORS("Colors"),
     METAL("metal");
