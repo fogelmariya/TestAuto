@@ -1,8 +1,6 @@
 package enums;
 
-/**
- * Created by User on 30.01.2018.
- */
+
 public enum Vegetables {
     CUCUMBER("Cucumber"),
     TOMATO("Tomato"),
