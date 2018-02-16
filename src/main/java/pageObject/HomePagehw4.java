@@ -67,6 +67,9 @@ public class HomePagehw4 {
     @FindBy(css = ".sub-menu [href = 'page8.htm']")
     private SelenideElement serviceItem6;
 
+    @FindBy(css = "a[href='page4.htm']")
+    private SelenideElement dataPageHeader;
+
 
     public void openSite() {
         open("https://jdi-framework.github.io/tests");
@@ -102,9 +105,7 @@ public class HomePagehw4 {
 
     public void checkMainText() {
         homeText1.isDisplayed();
-        //$(".main-title.text-center").isDisplayed();
         homeText2.isDisplayed();
-        //$(".main-txt.text-center").isDisplayed();
     }
 
     public void checkServicesLeft(ServicePageEnum[] services) {
@@ -134,7 +135,7 @@ public class HomePagehw4 {
 
     public void openServiceDates() {
         serviceMenuHead.click();
-        $(".dropdown [href = 'page4.htm']").click();
+        dataPageHeader.click();
         assertEquals(getWebDriver().getTitle(), "Dates");
     }
 }

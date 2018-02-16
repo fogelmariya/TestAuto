@@ -2,7 +2,7 @@ package enums;
 
 
 public enum Metals {
-    METALS("Metals"),
+    METALS("metal"),
     GOLD("Gold"),
     SILVER("Silver"),
     BRONZE("Bronze"),

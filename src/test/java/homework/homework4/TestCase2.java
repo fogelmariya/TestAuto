@@ -14,7 +14,7 @@ import static com.codeborne.selenide.Selenide.page;
 
 public class TestCase2 {
 
-    private HomePagehw4 homePage = new HomePagehw4();
+    private HomePagehw4 homePage;
     private DataPagehw4 dataPagehw4;
 
     @BeforeSuite
@@ -45,7 +45,7 @@ public class TestCase2 {
         homePage.openServiceDates();
 
         //5 Using drag-and-drop set Range sliders. left sliders - the most left position, right slider - the most rigth position
-        dataPagehw4.checkRangeSlider(0, 0);
+        dataPagehw4.setAndCheckSliders(0, 0);
 
     }
 }

@@ -1,6 +1,7 @@
 package homework.homework4;
 
 import com.codeborne.selenide.Configuration;
+import enums.Metals;
 import enums.ServicePageEnum;
 import listeners.AllureAttachmentListener;
 import org.testng.annotations.AfterTest;
@@ -10,13 +11,13 @@ import org.testng.annotations.Test;
 import pageObject.HomePagehw4;
 import pageObject.ServicePagehw4;
 
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.page;
+import static enums.ColorsEnum.COLOR;
 import static enums.ColorsEnum.YELLOW;
-import static enums.ElementsEnum.WATER;
-import static enums.ElementsEnum.WIND;
-import static enums.MetalEnum.SELEN;
-import static enums.ServicePageEnum.COLORS;
-import static enums.ServicePageEnum.METAL;
+import static enums.Nature.WATER;
+import static enums.Nature.WIND;
+
 
 @Listeners(AllureAttachmentListener.class)
 public class HomePageElementsTest {
@@ -41,8 +42,8 @@ public class HomePageElementsTest {
     public void IndexAndServicePageTest1(){
         page(homePage);
         //1 Open test site by URL
-        open("https://jdi-framework.github.io/tests");
-//        homePage.openSite();
+        //open("https://jdi-framework.github.io/tests");
+        homePage.openSite();
 
         //2 Perform login
         homePage.login("epam", "1234");
@@ -70,14 +71,14 @@ public class HomePageElementsTest {
         servicePagehw4.checkCheckbox(WIND.text);
 
         //9 Select radio
-        servicePagehw4.checkSelenRadio();
+        servicePagehw4.checkMetalRadio(Metals.SELEN.text);
 
         //10 Select in dropdown
-        servicePagehw4.checkYellowDropdown();
+        servicePagehw4.checkDropdown(YELLOW.text);
 
         //11 Check in logs section selected values and status (true|false)
-        servicePagehw4.checkLogValue(0, COLORS.text, YELLOW.text);
-        servicePagehw4.checkLogValue(1, METAL.text, SELEN.text);
+        servicePagehw4.checkLogValue(0, COLOR.text, YELLOW.text);
+        servicePagehw4.checkLogValue(1, Metals.METALS.text, Metals.SELEN.text);
         servicePagehw4.checkLogCondition(2, WIND.text, true);
         servicePagehw4.checkLogCondition(3, WATER.text, true);
 

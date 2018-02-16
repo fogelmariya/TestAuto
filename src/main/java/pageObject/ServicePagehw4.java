@@ -47,33 +47,31 @@ public class ServicePagehw4 {
 
     public void checkCheckbox(String element) {
 
-        for (SelenideElement checkbox: checkboxes) {
+        for (SelenideElement checkbox : checkboxes) {
             if (checkbox.getText().equals(element)) {
                 checkbox.find("input").click();
                 checkbox.find("input").shouldBe(checked);
             }
         }
-//       SelenideElement waterCheckbox = checkboxes.get(0);
-//        waterCheckbox.shouldHave(text("Water"));
-//        waterCheckbox.find("input").click();
-//        waterCheckbox.find("input").shouldBe(checked);
-//
-//        SelenideElement windCheckbox = checkboxes.get(2);
-//        windCheckbox.shouldHave(text("Wind"));
-//        windCheckbox.find("input").click();
-//        windCheckbox.find("input").shouldBe(checked);
     }
 
-    public void checkSelenRadio() {
-        SelenideElement selenRadio = radios.get(3);
-        selenRadio.find("input").click();
-        selenRadio.find("input").shouldBe(checked);
+    public void checkMetalRadio(String expectedMetal) {
+        for (SelenideElement radio : radios) {
+            if (radio.getText().equals(expectedMetal)) {
+                radio.click();
+                radio.find("input").shouldBe(checked);
+            }
+        }
     }
 
-    public void checkYellowDropdown() {
+    public void checkDropdown(String expectedColor) {
         colorsDropDown.click();
-        colorsList.get(3).click();
-        colorsDropDown.shouldHave(text("Yellow"));
+        for (SelenideElement color : colorsList) {
+            if (color.getText().equals(expectedColor)) {
+                color.click();
+                colorsDropDown.shouldHave(text(expectedColor));
+            }
+        }
     }
 
     public void checkLog(int index, String string) {
@@ -90,7 +88,7 @@ public class ServicePagehw4 {
     }
 
     public void checkUnselect(String element) {
-        for (SelenideElement checkbox: checkboxes) {
+        for (SelenideElement checkbox : checkboxes) {
             if (checkbox.getText().equals(element)) {
                 checkbox.find("input").click();
                 checkbox.find("input").shouldNotBe(checked);
