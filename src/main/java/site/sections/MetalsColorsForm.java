@@ -64,8 +64,8 @@ public class MetalsColorsForm extends Form<MetalsColorsData> {
 
     @Step
     public void setMetalsColorsData(MetalsColorsData metalsColorsData) {
-        odds.select(metalsColorsData.odds);
-        evens.select(metalsColorsData.evens);
+        odds.select(metalsColorsData.numbers[0]);
+        evens.select(metalsColorsData.numbers[1]);
         metals.select(metalsColorsData.metals);
         elements.check(metalsColorsData.elements);
         colors.select(metalsColorsData.colors);

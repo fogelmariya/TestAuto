@@ -1,7 +1,7 @@
 package site;
 
+import com.epam.jdi.uitests.web.selenium.elements.common.Button;
 import com.epam.jdi.uitests.web.selenium.elements.common.Label;
-import com.epam.jdi.uitests.web.selenium.elements.complex.TextList;
 import com.epam.jdi.uitests.web.selenium.elements.composite.WebSite;
 import com.epam.jdi.uitests.web.selenium.elements.pageobjects.annotations.JFindBy;
 import com.epam.jdi.uitests.web.selenium.elements.pageobjects.annotations.JPage;
@@ -10,6 +10,7 @@ import entities.MetalsColorsData;
 import entities.User;
 import enums.HeaderMenuItems;
 import forms.LoginForm;
+import org.openqa.selenium.support.FindBy;
 import ru.yandex.qatools.allure.annotations.Step;
 import site.pages.HomePage;
 import site.pages.MetalsColorsPage;
@@ -23,7 +24,10 @@ public class JDISite extends WebSite {
     public static Header header;
 
     @JFindBy(css = ".profile-photo")
-    public static Label profilePhoto;
+    private static Label profilePhoto;
+
+    @FindBy(css = ".logout .submit")
+    private static Button logOutButton;
 
     @JFindBy(css = ".m-l8")
     public static Header headerMenu;
@@ -31,16 +35,16 @@ public class JDISite extends WebSite {
     @JPage(url = "/metals-colors.html", title = "Metal and Colors")
     public static MetalsColorsPage metalsColorsPage;
 
-    @JFindBy(css = ".logs li")
-    public static TextList<Enum> actionsLog;
-
-    @JFindBy(css = ".results")
-    public static TextList<Enum> resultsLog;
-
     @Step
     public static void login() {
         profilePhoto.click();
         loginForm.loginAs(new User());
+    }
+
+    @Step
+    public static void logout() {
+        profilePhoto.click();
+        logOutButton.click();
     }
 
     @Step
