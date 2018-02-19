@@ -75,7 +75,7 @@ public class ServicePagehw4 {
     }
 
     public void checkLog(int index, String string) {
-        // List<SelenideElement> log = $$(".info-panel-body-log li");
+        // List<SelenideElement> logToMap = $$(".info-panel-body-logToMap li");
         log.get(index).shouldHave(text(string));
     }
 
