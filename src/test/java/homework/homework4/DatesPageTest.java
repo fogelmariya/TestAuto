@@ -12,7 +12,7 @@ import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.page;
 
 
-public class TestCase2 {
+public class DatesPageTest {
 
     private HomePagehw4 homePage;
     private DataPagehw4 dataPagehw4;
@@ -26,12 +26,12 @@ public class TestCase2 {
     }
 
     @AfterTest
-    public void tearDown(){
+    public void tearDown() {
         close();
     }
 
     @Test
-    public void DataServiceTest(){
+    public void SlidersTest() {
         //1 Open test site by URL
         homePage.openSite();
 
@@ -45,7 +45,10 @@ public class TestCase2 {
         homePage.openServiceDates();
 
         //5 Using drag-and-drop set Range sliders. left sliders - the most left position, right slider - the most rigth position
-        dataPagehw4.setAndCheckSliders(0, 0);
+        dataPagehw4.setSlidersRange(0, 100);
+        dataPagehw4.setSlidersRange(0, 0);
+        dataPagehw4.setSlidersRange(100, 100);
+        dataPagehw4.setSlidersRange(30, 70);
 
     }
 }
