@@ -1,6 +1,7 @@
 package homework.homework7;
 
 import entities.MetalsColorsData;
+import entities.User;
 import homework.TestInit;
 import org.testng.annotations.Test;
 
@@ -9,10 +10,10 @@ import static site.JDISite.*;
 public class MetalsColorsPageTest extends TestInit {
 
     @Test
-    public void loginTest() {
+    public void metalsColorsDefaultTest() {
         //1 Login on JDI site as User
         homePage.open();
-        login();
+        login(new User());
         homePage.checkOpened();
 
         //2 Open Metals & Colors page by Header menu
@@ -27,9 +28,7 @@ public class MetalsColorsPageTest extends TestInit {
         metalsColorsPage.metalsColorsForm.submitButton.click();
 
         //5 Result sections should contains data  below:
-        metalsColorsPage.metalsColorsResultSection.checkResultLog(metalsColorsData);
-        //metalsColorsPage.metalsColorsForm.checkResultLog(new MetalsColorsData());
-        //checkResultLog();
-//
+        metalsColorsPage.metalsColorsResultSection.checkResult(metalsColorsData);
+
     }
 }

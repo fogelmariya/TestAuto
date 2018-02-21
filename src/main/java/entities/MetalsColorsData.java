@@ -2,14 +2,13 @@ package entities;
 
 
 import com.epam.commons.DataClass;
-import lombok.AllArgsConstructor;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 import static enums.MetalsColorsEnum.*;
 
-@AllArgsConstructor
+
 public class MetalsColorsData extends DataClass {
 
     public String[] summary;
@@ -29,23 +28,43 @@ public class MetalsColorsData extends DataClass {
         vegetables = new String[]{"Cucumber", "Tomato"};
     }
 
-//    public MetalsColorsData(String[] summary, String[] elements, String colors, String metals, String[] vegetables) {
-//        this.summary = summary;
-//        this.elements = elements;
-//        this.colors = colors;
-//        this.metals = metals;
-//        this.vegetables = vegetables;
-//    }
+    public MetalsColorsData(String[] summary, String[] elements, String colors, String metals, String[] vegetables) {
+        this.summary = summary;
+        this.elements = elements;
+        this.colors = colors;
+        this.metals = metals;
+        this.vegetables = vegetables;
+    }
 
-
-    public Map<String, String[]> makeLog() {
-
-        Map<String, String[]> result = new HashMap<>();
-        result.put(SUMMARY.text, new String[]{Integer.toString(Integer.parseInt(summary[0]) + Integer.parseInt(summary[1]))});
-        result.put(ELEMENTS.text, elements);
-        result.put(COLOR.text, new String[]{colors});
-        result.put(METAL.text, new String[]{metals});
-        result.put(VEGETABLES.text, vegetables);
+    public String elementsToString(MetalsColorsData metalsColorsData){
+        String result = "";
+        for (int i = 0; i < metalsColorsData.elements.length; i++) {
+            result += metalsColorsData.elements[i];
+            if (i != metalsColorsData.elements.length - 1)
+                result += ", ";
+        }
         return result;
     }
+
+    public String vegetablesToString(MetalsColorsData metalsColorsData){
+        String result = "";
+        for (int i = 0; i < metalsColorsData.vegetables.length; i++) {
+            result += metalsColorsData.vegetables[i];
+            if (i != metalsColorsData.vegetables.length - 1)
+                result += ", ";
+        }
+        return result;
+    }
+
+
+    public List<String> dataToString(MetalsColorsData metalsColorsData){
+        List<String> result = new ArrayList<>();
+        result.add(SUMMARY.text + ": " + Integer.toString(Integer.parseInt(summary[0]) + Integer.parseInt(summary[1])));
+        result.add(ELEMENTS.text + ": " + elementsToString(metalsColorsData));
+        result.add(COLOR.text + ": " + colors);
+        result.add(METAL.text + ": " + metals);
+        result.add(VEGETABLES.text + ": " + vegetablesToString(metalsColorsData));
+        return result;
+    }
+
 }

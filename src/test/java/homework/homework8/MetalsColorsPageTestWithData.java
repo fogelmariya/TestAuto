@@ -10,6 +10,8 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import utils.JsonLoader;
 
+import java.io.FileNotFoundException;
+
 import static site.JDISite.*;
 
 public class MetalsColorsPageTestWithData extends TestInit {
@@ -27,7 +29,7 @@ public class MetalsColorsPageTestWithData extends TestInit {
     }
 
     @DataProvider
-    public Object[][] jsonData() {
+    public Object[][] jsonData() throws FileNotFoundException {
         JsonLoader jsonLoader = new JsonLoader();
         return jsonLoader.data;
     }
@@ -46,7 +48,10 @@ public class MetalsColorsPageTestWithData extends TestInit {
         //3
         metalsColorsPage.metalsColorsForm.setMetalsColorsData(metalsColorsData);
 
+        //4 Submit form Metals & Colors
         metalsColorsPage.metalsColorsForm.submitButton.click();
-        metalsColorsPage.metalsColorsResultSection.checkResultLog(metalsColorsData);
+
+        //5 Result sections should contains data  below:
+        metalsColorsPage.metalsColorsResultSection.checkResult(metalsColorsData);
     }
 }
