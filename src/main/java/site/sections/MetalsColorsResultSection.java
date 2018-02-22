@@ -21,6 +21,8 @@ public class MetalsColorsResultSection extends Section {
     public void checkResult(MetalsColorsData metalsColorsData) {
         List<String> logList = actualResultLog.getTextList();
         List<String> data = metalsColorsData.dataToString(metalsColorsData);
+
+        Assert.assertTrue(logList.size() == data.size());
             for (String string: data) {
                 Assert.assertTrue(logList.contains(string));
             }

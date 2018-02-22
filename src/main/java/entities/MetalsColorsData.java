@@ -36,7 +36,7 @@ public class MetalsColorsData extends DataClass {
         this.vegetables = vegetables;
     }
 
-    public String elementsToString(MetalsColorsData metalsColorsData){
+    public String elementsToString(MetalsColorsData metalsColorsData) {
         String result = "";
         for (int i = 0; i < metalsColorsData.elements.length; i++) {
             result += metalsColorsData.elements[i];
@@ -46,7 +46,7 @@ public class MetalsColorsData extends DataClass {
         return result;
     }
 
-    public String vegetablesToString(MetalsColorsData metalsColorsData){
+    public String vegetablesToString(MetalsColorsData metalsColorsData) {
         String result = "";
         for (int i = 0; i < metalsColorsData.vegetables.length; i++) {
             result += metalsColorsData.vegetables[i];
@@ -57,13 +57,27 @@ public class MetalsColorsData extends DataClass {
     }
 
 
-    public List<String> dataToString(MetalsColorsData metalsColorsData){
+    public List<String> dataToString(MetalsColorsData metalsColorsData) {
         List<String> result = new ArrayList<>();
         result.add(SUMMARY.text + ": " + Integer.toString(Integer.parseInt(summary[0]) + Integer.parseInt(summary[1])));
-        result.add(ELEMENTS.text + ": " + elementsToString(metalsColorsData));
-        result.add(COLOR.text + ": " + colors);
-        result.add(METAL.text + ": " + metals);
-        result.add(VEGETABLES.text + ": " + vegetablesToString(metalsColorsData));
+        if (metalsColorsData.elements[0] != "") {
+            result.add(ELEMENTS.text + ": " + elementsToString(metalsColorsData));
+        }
+        if (metalsColorsData.colors != "") {
+            result.add(COLOR.text + ": " + colors);
+        } else {
+            result.add(COLOR.text + ": " + "Colors");
+        }
+        if (metalsColorsData.metals != "") {
+            result.add(METAL.text + ": " + metals);
+        } else {
+            result.add(METAL.text + ": " + "Metals");
+        }
+        if (metalsColorsData.vegetables[0] != "") {
+            result.add(VEGETABLES.text + ": " + vegetablesToString(metalsColorsData));
+        } else {
+            result.add(VEGETABLES.text + ": " + "Salad");
+        }
         return result;
     }
 
