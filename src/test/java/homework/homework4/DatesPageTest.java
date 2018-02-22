@@ -42,7 +42,7 @@ public class DatesPageTest {
         homePage.checkUserName("PITER CHAILOVSKII");
 
         //4 Open Service -> Dates
-        homePage.openServiceDates();
+        dataPagehw4.openServiceDates();
 
         //5 Using drag-and-drop set Range sliders. left sliders - the most left position, right slider - the most rigth position
         dataPagehw4.setSlidersRange(0, 100);

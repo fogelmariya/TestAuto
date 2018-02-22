@@ -48,21 +48,6 @@ public class HomePagehw4 {
     @FindBy(css = ".dropdown")
     private SelenideElement serviceMenuHead;
 
-    @FindBy(css = ".sub-menu [href = 'page3.htm']")
-    private SelenideElement serviceItem1;
-
-    @FindBy(css = ".sub-menu [href = 'page4.htm']")
-    private SelenideElement serviceItem2;
-
-    @FindBy(css = ".sub-menu [href = 'page5.htm']")
-    private SelenideElement serviceItem3;
-
-    @FindBy(css = ".sub-menu [href = 'page6.htm']")
-    private SelenideElement serviceItem4;
-
-    @FindBy(css = ".sub-menu [href = 'page7.htm']")
-    private SelenideElement serviceItem5;
-
     @FindBy(css = ".sub-menu [href = 'page8.htm']")
     private SelenideElement serviceItem6;
 

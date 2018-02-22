@@ -9,17 +9,10 @@ import java.util.List;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.actions;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+import static org.testng.Assert.assertEquals;
 
 public class DataPagehw4 {
-
-    //    @FindBy(css = "uui-slider")
-//    private static SelenideElement slider;
-//
-//    @FindBy(css = ".ui-slider-handle:nth-of-type(1)")
-//    private SelenideElement leftSlider;
-//
-//    @FindBy(css = ".ui-slider-handle:nth-of-type(2)")
-//    private SelenideElement rightSlider;
 
     @FindBy(css = ".ui-slider-handle")
     private List<SelenideElement> nodes;
@@ -29,6 +22,12 @@ public class DataPagehw4 {
 
     @FindBy(css = "div:nth-child(2) > div > a:nth-child(3)")
     private SelenideElement sliderRight;
+
+    @FindBy(css = ".dropdown")
+    private SelenideElement serviceMenuHead;
+
+    @FindBy(css = "a[href='page4.htm']")
+    private SelenideElement dataPageHeader;
 
     public void setSlidersRange(int left, int right) {
         actions().dragAndDropBy(sliderLeft, -1000, 0).build().perform();
@@ -45,6 +44,12 @@ public class DataPagehw4 {
 
         sliderLeft.shouldHave(Condition.matchText(Integer.toString(left)));
         sliderRight.shouldHave(text(String.valueOf(right)));
+    }
+
+    public void openServiceDates() {
+        serviceMenuHead.click();
+        dataPageHeader.click();
+        assertEquals(getWebDriver().getTitle(), "Dates");
     }
 }
 
