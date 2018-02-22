@@ -2,14 +2,13 @@ package pageObject;
 
 
 import com.codeborne.selenide.SelenideElement;
-import enums.ServicePageEnum;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.testng.Assert.assertEquals;
@@ -67,6 +66,12 @@ public class HomePagehw4 {
     @FindBy(css = ".sub-menu [href = 'page8.htm']")
     private SelenideElement serviceItem6;
 
+    @FindBy(css = ".sub li")
+    private List<SelenideElement> servicesLeft;
+
+    @FindBy(css = ".dropdown-menu li")
+    private List<SelenideElement> servicesHeader;
+
     @FindBy(css = "a[href='page4.htm']")
     private SelenideElement dataPageHeader;
 
@@ -108,28 +113,33 @@ public class HomePagehw4 {
         homeText2.isDisplayed();
     }
 
-    public void checkServicesLeft(ServicePageEnum[] services) {
+    public void checkServicesLeft(List<String> services) {
         serviceMenuLeft.click();
+        List<String> servicesString = new ArrayList<String>();
 
-        serviceItem1.shouldHave(text(services[0].text));
-        serviceItem2.shouldHave(text(services[1].text));
-        serviceItem3.shouldHave(text(services[2].text));
-        serviceItem4.shouldHave(text(services[3].text));
-        serviceItem5.shouldHave(text(services[4].text));
-        serviceItem6.shouldHave(text(services[5].text));
+        for (SelenideElement selenideElement : servicesLeft) {
+            servicesString.add(selenideElement.getText());
+        }
+
+        for (String service : services) {
+            Assert.assertTrue(servicesString.contains(service));
+        }
     }
 
-    public void checkServicesHeader(ServicePageEnum[] services) {
+    public void checkServicesHeader(List<String> services) {
         serviceMenuHead.click();
-        $(".dropdown [href = 'page3.htm']").shouldHave(text(services[0].text));
-        $(".dropdown [href = 'page4.htm']").shouldHave(text(services[1].text));
-        $(".dropdown [href = 'page5.htm']").shouldHave(text(services[2].text));
-        $(".dropdown [href = 'page6.htm']").shouldHave(text(services[3].text));
-        $(".dropdown [href = 'page7.htm']").shouldHave(text(services[4].text));
-        $(".dropdown [href = 'page8.htm']").shouldHave(text(services[5].text));
+        List<String> servicesString = new ArrayList<String>();
+
+        for (SelenideElement selenideElement : servicesHeader) {
+            servicesString.add(selenideElement.getText().toLowerCase());
+        }
+
+        for (String service : services) {
+            Assert.assertTrue(servicesString.contains(service.toLowerCase()));
+        }
     }
 
-    public void openServiceDifferentElements(){
+    public void openServiceDifferentElements() {
         serviceItem6.click();
     }
 

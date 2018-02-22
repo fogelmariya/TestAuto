@@ -57,10 +57,10 @@ public class HomePageElementsTest {
         homePage.checkMainText();
 
         //5 Click on Service subcategory in the left section and check that drop down contains options
-        homePage.checkServicesLeft(ServicePageEnum.values());
+        homePage.checkServicesLeft(ServicePageEnum.getServices());
 
         //6 Click on "Service" subcategory in the header and check that drop down contains options
-        homePage.checkServicesHeader(ServicePageEnum.values());
+        homePage.checkServicesHeader(ServicePageEnum.getServices());
 
         //7 Check interface on Service page, it contains all needed elements.
         homePage.openServiceDifferentElements();
