@@ -58,22 +58,22 @@ public class MetalsColorsData extends DataClass {
 
 
     public List<String> dataToString(MetalsColorsData metalsColorsData) {
-        List<String> result = new ArrayList<>();
+        List<String> result = new ArrayList<String>();
         result.add(SUMMARY.text + ": " + Integer.toString(Integer.parseInt(summary[0]) + Integer.parseInt(summary[1])));
         if (metalsColorsData.elements[0] != "") {
             result.add(ELEMENTS.text + ": " + elementsToString(metalsColorsData));
         }
-        if (metalsColorsData.colors != "") {
+        if (!metalsColorsData.colors.equals("")) {
             result.add(COLOR.text + ": " + colors);
         } else {
             result.add(COLOR.text + ": " + "Colors");
         }
-        if (metalsColorsData.metals != "") {
+        if (!metalsColorsData.metals.equals("")) {
             result.add(METAL.text + ": " + metals);
         } else {
             result.add(METAL.text + ": " + "Metals");
         }
-        if (metalsColorsData.vegetables[0] != "") {
+        if (!metalsColorsData.vegetables[0].equals("")) {
             result.add(VEGETABLES.text + ": " + vegetablesToString(metalsColorsData));
         } else {
             result.add(VEGETABLES.text + ": " + "Salad");
