@@ -1,18 +1,14 @@
 package homework.homework4;
 
-import com.codeborne.selenide.Configuration;
+import base.BaseSelenide;
 import enums.Metals;
 import enums.ServicePageEnum;
 import listeners.AllureAttachmentListener;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pageObject.HomePagehw4;
 import pageObject.ServicePagehw4;
 
-import static com.codeborne.selenide.Selenide.close;
-import static com.codeborne.selenide.Selenide.page;
 import static enums.ColorsEnum.COLOR;
 import static enums.ColorsEnum.YELLOW;
 import static enums.Nature.WATER;
@@ -20,27 +16,14 @@ import static enums.Nature.WIND;
 
 
 @Listeners(AllureAttachmentListener.class)
-public class HomePageElementsTest {
+public class HomePageElementsTest extends BaseSelenide{
 
-    private HomePagehw4 homePage ;
+    private HomePagehw4 homePage;
     private ServicePagehw4 servicePagehw4;
 
-    @BeforeSuite
-    public void setUp() {
-        Configuration.browser = "chrome";
-        Configuration.startMaximized = true;
-        homePage = page(HomePagehw4.class);
-        servicePagehw4 = page(ServicePagehw4.class);
-    }
-
-    @AfterTest
-    public void tearDown(){
-        close();
-    }
-
     @Test
-    public void IndexAndServicePageTest1(){
-        page(homePage);
+    public void IndexAndServicePageTest1() {
+        // page(homePage);
         //1 Open test site by URL
         //open("https://jdi-framework.github.io/tests");
         homePage.openSite();
@@ -77,18 +60,18 @@ public class HomePageElementsTest {
         servicePagehw4.checkDropdown(YELLOW.text);
 
         //11 Check in logs section selected values and status (true|false)
-        servicePagehw4.checkLogValue(0, COLOR.text, YELLOW.text);
-        servicePagehw4.checkLogValue(1, Metals.METALS.text, Metals.SELEN.text);
-        servicePagehw4.checkLogCondition(2, WIND.text, true);
-        servicePagehw4.checkLogCondition(3, WATER.text, true);
+        servicePagehw4.checkLogValue(COLOR.text, YELLOW.text);
+        servicePagehw4.checkLogValue(Metals.METALS.text, Metals.SELEN.text);
+        servicePagehw4.checkLogCondition(WIND.text, true);
+        servicePagehw4.checkLogCondition(WATER.text, true);
 
         //12 Unselect and assert checkboxes
         servicePagehw4.checkUnselect(WATER.text);
         servicePagehw4.checkUnselect(WIND.text);
 
         //13 Check in logs section unselected values and status (true|false)
-        servicePagehw4.checkLogCondition(0, WIND.text, false);
-        servicePagehw4.checkLogCondition(1, WATER.text, false);
+        servicePagehw4.checkLogCondition( WIND.text, false);
+        servicePagehw4.checkLogCondition( WATER.text, false);
     }
 
 

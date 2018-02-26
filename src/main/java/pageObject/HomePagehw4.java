@@ -10,8 +10,6 @@ import java.util.List;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
-import static org.testng.Assert.assertEquals;
 
 public class HomePagehw4 {
 
@@ -80,6 +78,7 @@ public class HomePagehw4 {
     }
 
     public void checkImageIsDisplayed() {
+        Assert.assertTrue(homeImages.size() == 4);
         for (SelenideElement element : homeImages) {
             Assert.assertTrue(element.isDisplayed());
         }
@@ -126,11 +125,5 @@ public class HomePagehw4 {
 
     public void openServiceDifferentElements() {
         serviceItem6.click();
-    }
-
-    public void openServiceDates() {
-        serviceMenuHead.click();
-        dataPageHeader.click();
-        assertEquals(getWebDriver().getTitle(), "Dates");
     }
 }

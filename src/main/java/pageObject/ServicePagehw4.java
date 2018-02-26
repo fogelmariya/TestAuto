@@ -36,8 +36,6 @@ public class ServicePagehw4 {
     private List<SelenideElement> log;
 
     public void checkInterfaces() {
-        // $(".dropdown").click();
-        //$(".sub-menu a[href^='page8']").click();
         checkboxes.shouldHaveSize(4);
         radios.shouldHaveSize(4);
         buttons.shouldHaveSize(2);
@@ -74,17 +72,16 @@ public class ServicePagehw4 {
         }
     }
 
-    public void checkLog(int index, String string) {
-        // List<SelenideElement> logToMap = $$(".info-panel-body-logToMap li");
-        log.get(index).shouldHave(text(string));
+    public void checkLog(String string) {
+        log.contains(string);
     }
 
-    public void checkLogValue(int index, String element, String value) {
-        checkLog(index, element + ": value changed to " + value);
+    public void checkLogValue(String element, String value) {
+        checkLog(element + ": value changed to " + value);
     }
 
-    public void checkLogCondition(int index, String element, boolean condition) {
-        checkLog(index, element + ": condition changed to " + condition);
+    public void checkLogCondition(String element, boolean condition) {
+        checkLog(element + ": condition changed to " + condition);
     }
 
     public void checkUnselect(String element) {

@@ -3,6 +3,7 @@ package pageObject;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
@@ -30,6 +31,9 @@ public class DataPagehw4 {
     private SelenideElement dataPageHeader;
 
     public void setSlidersRange(int left, int right) {
+    //    actions().moveToElement(sliderLeft);
+      //  actions().perform();
+        ((JavascriptExecutor) getWebDriver()).executeScript("arguments[0].scrollIntoView();", sliderLeft);
         actions().dragAndDropBy(sliderLeft, -1000, 0).build().perform();
         actions().dragAndDropBy(sliderRight, 1000, 0).build().perform();
 
