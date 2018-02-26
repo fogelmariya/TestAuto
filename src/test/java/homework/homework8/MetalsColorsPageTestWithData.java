@@ -3,7 +3,8 @@ package homework.homework8;
 
 import entities.MetalsColorsData;
 import entities.User;
-import homework.TestInit;
+import enums.Users;
+import homework.homework7.TestInit;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -19,7 +20,7 @@ public class MetalsColorsPageTestWithData extends TestInit {
     @BeforeClass
     public void openHomePage() {
         homePage.open();
-        login(new User());
+        login(new User(Users.PITER.login, Users.PITER.password));
         homePage.checkOpened();
     }
 

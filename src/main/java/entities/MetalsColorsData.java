@@ -36,48 +36,14 @@ public class MetalsColorsData extends DataClass {
         this.vegetables = vegetables;
     }
 
-    public String elementsToString(MetalsColorsData metalsColorsData) {
-        String result = "";
-        for (int i = 0; i < metalsColorsData.elements.length; i++) {
-            result += metalsColorsData.elements[i];
-            if (i != metalsColorsData.elements.length - 1)
-                result += ", ";
-        }
-        return result;
-    }
-
-    public String vegetablesToString(MetalsColorsData metalsColorsData) {
-        String result = "";
-        for (int i = 0; i < metalsColorsData.vegetables.length; i++) {
-            result += metalsColorsData.vegetables[i];
-            if (i != metalsColorsData.vegetables.length - 1)
-                result += ", ";
-        }
-        return result;
-    }
-
-
-    public List<String> dataToString(MetalsColorsData metalsColorsData) {
+    public List<String> dataToString() {
         List<String> result = new ArrayList<String>();
         result.add(SUMMARY.text + ": " + Integer.toString(Integer.parseInt(summary[0]) + Integer.parseInt(summary[1])));
-        if (metalsColorsData.elements[0] != "") {
-            result.add(ELEMENTS.text + ": " + elementsToString(metalsColorsData));
-        }
-        if (!metalsColorsData.colors.equals("")) {
-            result.add(COLOR.text + ": " + colors);
-        } else {
-            result.add(COLOR.text + ": " + "Colors");
-        }
-        if (!metalsColorsData.metals.equals("")) {
-            result.add(METAL.text + ": " + metals);
-        } else {
-            result.add(METAL.text + ": " + "Metals");
-        }
-        if (!metalsColorsData.vegetables[0].equals("")) {
-            result.add(VEGETABLES.text + ": " + vegetablesToString(metalsColorsData));
-        } else {
-            result.add(VEGETABLES.text + ": " + "Salad");
-        }
+        result.add(ELEMENTS.text + ": " + String.join(", ", elements));
+        result.add(COLOR.text + ": " + colors);
+
+        result.add(METAL.text + ": " + metals);
+        result.add(VEGETABLES.text + ": " + String.join(", ", vegetables));
         return result;
     }
 

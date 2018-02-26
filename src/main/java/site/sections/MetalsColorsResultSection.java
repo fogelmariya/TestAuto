@@ -20,9 +20,8 @@ public class MetalsColorsResultSection extends Section {
     @Step
     public void checkResult(MetalsColorsData metalsColorsData) {
         List<String> logList = actualResultLog.getTextList();
-        List<String> data = metalsColorsData.dataToString(metalsColorsData);
+        List<String> data = metalsColorsData.dataToString();
 
-        Assert.assertTrue(logList.size() == data.size());
             for (String string: data) {
                 Assert.assertTrue(logList.contains(string));
             }
