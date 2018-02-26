@@ -30,17 +30,13 @@ public class MetalsColorsPageTestWithData extends TestInit {
     }
 
     @DataProvider
-    public Object[][] jsonData() throws FileNotFoundException {
-        JsonLoader jsonLoader = new JsonLoader();
-        return jsonLoader.data;
+    public Object[] jsonData() throws FileNotFoundException {
+        return JsonLoader.getData();
     }
 
     @Test(dataProvider = "jsonData")
     public void jsonDataMetalsColorsTest(MetalsColorsData metalsColorsData) {
         //1 Login on JDI site as User
-//        homePage.open();
-        //login(new User());
-//        homePage.checkOpened();
 
         //2 Open Metals & Colors page by Header menu
         openMetalsColorsPage();

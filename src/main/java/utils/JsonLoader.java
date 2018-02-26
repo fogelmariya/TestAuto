@@ -26,4 +26,11 @@ public class JsonLoader {
             data[i] = new Object[]{values[i]};
         }
     }
+
+    public static Object[] getData() throws FileNotFoundException {
+        JsonObject jsonObject = new JsonParser().parse(new FileReader("src/main/resources/ex8_jdi_metalsColorsDataSet.json")).getAsJsonObject();
+        Map<String, MetalsColorsData> metalsColorsData = new Gson().fromJson(jsonObject, new TypeToken<Map<String, MetalsColorsData>>() {
+        }.getType());
+        return metalsColorsData.values().toArray();
+    }
 }
